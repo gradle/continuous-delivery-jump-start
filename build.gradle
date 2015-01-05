@@ -1,0 +1,45 @@
+import org.gradle.sample.ProjectVersion
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.bmuschko:gradle-tomcat-plugin:2.0'
+    }
+}
+
+apply plugin: 'war'
+apply plugin: 'idea'
+apply plugin: 'com.bmuschko.tomcat'
+
+group = 'org.gradle.training'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'ch.qos.logback:logback-classic:1.1.2'
+    compile 'org.springframework:spring-webmvc:4.1.1.RELEASE'
+    compile 'org.apache.httpcomponents:httpclient:4.3.6'
+    compile 'commons-io:commons-io:2.4'
+    compile 'com.googlecode.json-simple:json-simple:1.1.1'
+    providedCompile 'javax.servlet:servlet-api:2.5'
+    runtime 'jstl:jstl:1.2'
+    testCompile 'junit:junit:4.11'
+    testCompile 'org.mockito:mockito-all:1.10.8'
+
+    def tomcatVersion = '7.0.57'
+    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+           "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}"
+    tomcat("org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}") {
+        exclude group: 'org.eclipse.jdt.core.compiler', module: 'ecj'
+    }
+}
+
+[tomcatRun, tomcatRunWar]*.contextPath = 'sample-app'
