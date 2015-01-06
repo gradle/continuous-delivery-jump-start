@@ -1,5 +1,3 @@
-import org.gradle.sample.ProjectVersion
-
 buildscript {
     repositories {
         jcenter()
