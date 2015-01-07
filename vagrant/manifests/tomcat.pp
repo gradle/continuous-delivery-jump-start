@@ -2,6 +2,10 @@ group { 'puppet':
   ensure => 'present'
 }
 
+exec { "update-package-list":
+  command => "/usr/bin/sudo /usr/bin/apt-get update",
+}
+
 class java_7::install {
   package { "openjdk-7-jdk":
     ensure => installed
@@ -34,4 +38,4 @@ class tomcat7 {
 
 include tomcat7
 
-Class["java_7::install"] -> Class["tomcat7"]
+Exec["update-package-list"] -> Class["java_7::install"] -> Class["tomcat7"]
