@@ -19,7 +19,7 @@ public class JsonGradlePluginsApiParser implements GradlePluginsApiParser {
             JSONObject json = (JSONObject)parser.parse(data);
             
             GradlePluginsSummary summary = new GradlePluginsSummary();
-            summary.setCount((Long)json.get("count"));
+            summary.setCount((Long)json.get("package_count"));
             summary.setExceptionMessage((String)json.get("exceptionMessage"));
             return summary;
         }

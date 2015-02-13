@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class GradlePluginsServiceImpl implements GradlePluginsService {
     private final Logger logger = LoggerFactory.getLogger(GradlePluginsServiceImpl.class);
-    public static final String PLUGINS_STATUS_URL = "http://plugins.gradle.org/status/catalog/status";
+    public static final String PLUGINS_STATUS_URL = "https://api.bintray.com/repos/gradle/gradle-plugins";
     public static final String ERROR_MESSAGE = "Failed to successfully retrieve Gradle plugins summary";
     
     private final HttpClient httpClient;

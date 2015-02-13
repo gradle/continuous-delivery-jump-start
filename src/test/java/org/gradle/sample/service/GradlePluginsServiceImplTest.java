@@ -24,7 +24,7 @@ public class GradlePluginsServiceImplTest {
 
     @Test
     public void successfullyGetSummary() {
-        String json = "{ \"count\": 217 }";
+        String json = "{ \"package_count\": 217 }";
         HttpResponse expectedResponse = new HttpResponse();
         expectedResponse.setStatusCode(200);
         expectedResponse.setBody(json);
