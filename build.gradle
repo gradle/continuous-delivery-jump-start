@@ -4,7 +4,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.bmuschko:gradle-tomcat-plugin:2.0'
+        classpath 'com.bmuschko:gradle-tomcat-plugin:2.2.2'
     }
 }
 
@@ -32,12 +32,12 @@ dependencies {
     testCompile 'junit:junit:4.11'
     testCompile 'org.mockito:mockito-all:1.10.8'
 
-    def tomcatVersion = '7.0.57'
+    def tomcatVersion = '7.0.62'
     tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
-           "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}"
-    tomcat("org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}") {
-        exclude group: 'org.eclipse.jdt.core.compiler', module: 'ecj'
-    }
+           "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
+           "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
 }
 
-[tomcatRun, tomcatRunWar]*.contextPath = 'sample-app'
+tomcat {
+    contextPath = 'sample-app'
+}
